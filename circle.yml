@@ -7,5 +7,7 @@ machine:
 deployment:
   production:
     branch: master
-    heroku:
-      appname: test-board-shouhei20151203 
+    commands:
+      - git push git@heroku.com:test-board-shouhei20151203:.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app test-board-shouhei20151203:
+         timeout: 400
