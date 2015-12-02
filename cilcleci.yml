@@ -1,0 +1,11 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  ruby:
+    version: 2.2.3
+
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: test-board-shouhei20151203 
