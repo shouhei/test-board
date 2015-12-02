@@ -46,4 +46,18 @@ describe MessagesController do
       end
     end
   end
+  describe 'DELETE #destroy' do
+    before :each do
+      @message = FactoryGirl.create(:message)
+    end
+    it 'delete the new message in the database' do
+      expect{
+        delete :destroy, id: @message
+      }.to change(Message, :count).by(-1)
+    end
+    it 'redirects to messsage#index' do
+      delete :destroy, id: @message
+      expect(response).to redirect_to messages_url
+    end
+  end
 end
